@@ -10,35 +10,43 @@ var constantObject = {
 
 // Refactor the following functions into pure functions:
 
-var addOne = function () {
-  constantNumber += 1;
-  return constantNumber;
+var addOne = function (n) {
+  n += 1;
+  return n;
 };
 
-
-var timesTwo = function () {
-  constantNumber = constantNumber * 2
-  return constantNumber
+var timesTwo = function (n) {
+  n = n * 2;
+  return n;
 };
-
 
 var incrementArray = function (array) {
-  array.forEach(function(x, i) {
-    array[i] =  x + 1;
-  })
-  return array
-}
+  var newArr = [];
+  for (var i = 0; i < array.length; i++) {
+    newArr.push(array[i]);
+  }
+  newArr.forEach(function (x, i) {
+    newArr[i] = x + 1;
+  });
+  return newArr;
+};
 
 var addNumberArray = function (array, number) {
-  array.push(number);
-  return array;
+  var newArr = [];
+  for (var i = 0; i < array.length; i++) {
+    newArr.push(array[i]);
+  }
+  newArr.push(number);
+  return newArr;
 };
 
 var incrementObject = function (object) {
-  Object.keys(object).forEach(function(x) {
-    object[x] = object[x] + 1
+  var newObj = Object.assign({}, object);
+
+  Object.keys(newObj).forEach(function (x) { // looping array of keys of obj
+    newObj[x] = newObj[x] + 1;
   });
-  return object;
+  return newObj;
 };
 
 module.exports = {
